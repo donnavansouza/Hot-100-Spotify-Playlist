@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = fastapi.FastAPI()
 
-origins=['http:localhost:3000']
+origins=['http://localhost:3000']
 
 app.add_middleware(
     CORSMiddleware,
@@ -63,7 +63,7 @@ def create_playlist(year, month, day):
 
     sp.playlist_add_items(playlist_id=playlist["id"], items=song_uris)
 
-    return playlist['id']
+    return playlist['id'].strip()
 
 
 @app.get("/createPlaylist/{year:month:day}")
